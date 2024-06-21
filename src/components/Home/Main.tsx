@@ -1,7 +1,8 @@
-import { List, ListItem, Wrapper } from "./styled";
+import { ListItem } from "#components/ListItem";
+import { List, Wrapper } from "./styled";
 import { useEffect, useState } from "react";
 
-export function Home() {
+export function Main() {
   const [list, setList] = useState<{ name: string; time: string }[]>([]);
 
   useEffect(() => {

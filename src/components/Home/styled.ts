@@ -15,7 +15,3 @@ export const List = styled.ul`
   background-color: #4e4e4e;
   color: #fff;
 `;
-
-export const ListItem = styled.li`
-  padding: 8px 16px;
-`;

@@ -1,15 +1,21 @@
 import { styled } from "@linaria/react";
-import { css } from "@linaria/core";
 
 export const Wrapper = styled.div`
   width: 100%;
+  padding: 20px;
 `;
 
-export const Heading = styled.h1`
-  margin: 10px 20px;
+export const List = styled.ul`
+  margin: 0 auto;
+  list-style: none;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #4e4e4e;
+  color: #fff;
 `;
 
-export const HeadingStyles = css`
-  font-size: 36px;
-  font-weight: 600;
+export const ListItem = styled.li`
+  padding: 8px 16px;
 `;

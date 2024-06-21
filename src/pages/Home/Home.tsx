@@ -1,4 +1,4 @@
-import { Wrapper } from "./styled";
+import { List, ListItem, Wrapper } from "./styled";
 import { useEffect, useState } from "react";
 
 export function Home() {
@@ -6,7 +6,7 @@ export function Home() {
 
   useEffect(() => {
     const fetchNames = async () => {
-      const response = await fetch("http://localhost:3000/names");
+      const response = await fetch("http://95.163.235.173:3000/names");
       const data = await response.json();
       if (data.length > list.length) {
         setList(data[data.length - 1]);
@@ -22,16 +22,13 @@ export function Home() {
 
   return (
     <Wrapper>
-      <div>
-        <h1>Names List</h1>
-        <ul>
-          {list.map((item, index) => (
-            <li key={index + item.name}>
-              {item.name} {item.time}
-            </li>
-          ))}
-        </ul>
-      </div>
+      <List>
+        {list.map((item, index) => (
+          <ListItem key={index + item.name}>
+            {item.time} {item.name}
+          </ListItem>
+        ))}
+      </List>
     </Wrapper>
   );
 }

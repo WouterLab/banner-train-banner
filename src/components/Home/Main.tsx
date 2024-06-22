@@ -7,7 +7,7 @@ export function Main() {
 
   useEffect(() => {
     const fetchNames = async () => {
-      const response = await fetch("http://95.163.235.173:3000/names");
+      const response = await fetch("https://danilpanov.ru/api/main");
       const data = await response.json();
       if (data.length > list.length) {
         setList(data[data.length - 1]);

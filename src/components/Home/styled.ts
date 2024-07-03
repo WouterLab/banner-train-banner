@@ -6,12 +6,17 @@ export const Wrapper = styled.div`
 `;
 
 export const List = styled.ul`
-  margin: 0 auto;
   list-style: none;
-  max-width: 400px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  background-color: #4e4e4e;
+  gap: 8px;
   color: #fff;
+  align-items: center;
+`;
+
+export const Divider = styled.div`
+  background-color: #222;
+  box-shadow: 0 4px 10px 0 rgba(255, 255, 255, 0.2);
+  height: 4px;
+  margin: 8px 0;
 `;

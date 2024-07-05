@@ -16,7 +16,10 @@ export function ListItem({ time, name, phrase }: ListItemProps) {
     let currentLine = "";
 
     for (let i = 0; i < words.length; i++) {
-      if ((currentLine + words[i]).length > 24) {
+      if (words[i].startsWith("VK") && i > 0 && i < 7) {
+        lines.push(currentLine.trim().padEnd(29, " "));
+        currentLine = words[i] + " ";
+      } else if ((currentLine + words[i]).length > 24) {
         lines.push(currentLine.trim().padEnd(29, " "));
         currentLine = words[i] + " ";
       } else {
@@ -42,6 +45,9 @@ export function ListItem({ time, name, phrase }: ListItemProps) {
   const fourthLine = lines[3]
     ? "     " + lines[3].trim().padEnd(29, " ")
     : "".padEnd(29, " ");
+  const fifthLine = lines[4]
+    ? "     " + lines[4].trim().padEnd(29, " ")
+    : "".padEnd(29, " ");
 
   let filledText = "";
 
@@ -53,15 +59,23 @@ export function ListItem({ time, name, phrase }: ListItemProps) {
   if (text.length > 48 && text.length < 72)
     filledText = firstLine + secondLine.slice(0, 29) + thirdLine.slice(0, 29);
 
-  if (text.length > 72 && text.length < 96)
+  if (text.length > 72 && text.length < 88)
     filledText =
       firstLine +
       secondLine.slice(0, 29) +
       thirdLine.slice(0, 29) +
       fourthLine.slice(0, 29);
 
+  if (text.length > 88 && text.length < 120)
+    filledText =
+      firstLine +
+      secondLine.slice(0, 29) +
+      thirdLine.slice(0, 29) +
+      fourthLine.slice(0, 29) +
+      fifthLine.slice(0, 29);
+
   const greenIndexes = [0, 1, 3, 4];
-  const indexesWithMargin = [4, 33, 62, 91];
+  const indexesWithMargin = [4, 33, 62, 91, 120];
 
   return (
     <Wrapper>

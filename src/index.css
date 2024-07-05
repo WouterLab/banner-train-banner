@@ -95,13 +95,20 @@ body,
 #root {
   height: 100%;
   font-family: "5by7";
-  transition: all 0.3s;
   overflow: auto;
   background: #151c22;
   background: linear-gradient(145deg, #151c22, #192229);
 
   font-size: 64px;
   text-transform: uppercase;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+#root {
+  border: 30px solid #a02f5b;
 }
 
 @font-face {

@@ -8,33 +8,60 @@ type ListItemProps = {
 
 export function ListItem({ time, name, phrase }: ListItemProps) {
   const text = time + name + " " + phrase;
-  const totalLetters = 60;
-  const emptyRow = "                              ";
+  const emptyRow = "                             ";
 
-  let filledText = text.padEnd(totalLetters, " ");
+  const wrapTextIntoLines = (text: string) => {
+    const words = text.split(" ");
+    const lines: string[] = [];
+    let currentLine = "";
 
-  if (filledText.length > 30) {
-    let firstLine = filledText.slice(0, 30);
-    let secondLine = filledText.slice(30, 60);
-
-    if (firstLine[29] !== " " && secondLine[0] !== " ") {
-      const lastSpaceIndex = firstLine.lastIndexOf(" ");
-      if (lastSpaceIndex !== -1) {
-        secondLine = (
-          "     " +
-          firstLine.slice(lastSpaceIndex + 1) +
-          secondLine
-        ).slice(0, 30);
-
-        firstLine = firstLine.slice(0, lastSpaceIndex).padEnd(30, " ");
+    for (let i = 0; i < words.length; i++) {
+      if ((currentLine + words[i]).length > 24) {
+        lines.push(currentLine.trim().padEnd(29, " "));
+        currentLine = words[i] + " ";
+      } else {
+        currentLine += words[i] + " ";
       }
     }
 
-    filledText = (firstLine + secondLine).padEnd(totalLetters, " ");
-  }
+    if (currentLine.trim() !== "") {
+      lines.push(currentLine.trim().padEnd(29, " "));
+    }
+
+    return lines;
+  };
+
+  const lines = wrapTextIntoLines(text);
+  const firstLine = lines[0] || "".padEnd(29, " ");
+  const secondLine = lines[1]
+    ? "     " + lines[1].trim().padEnd(29, " ")
+    : "".padEnd(29, " ");
+  const thirdLine = lines[2]
+    ? "     " + lines[2].trim().padEnd(29, " ")
+    : "".padEnd(29, " ");
+  const fourthLine = lines[3]
+    ? "     " + lines[3].trim().padEnd(29, " ")
+    : "".padEnd(29, " ");
+
+  let filledText = "";
+
+  if (text.length < 24) filledText = firstLine;
+
+  if (text.length > 24 && text.length < 48)
+    filledText = firstLine + secondLine.slice(0, 29);
+
+  if (text.length > 48 && text.length < 72)
+    filledText = firstLine + secondLine.slice(0, 29) + thirdLine.slice(0, 29);
+
+  if (text.length > 72 && text.length < 96)
+    filledText =
+      firstLine +
+      secondLine.slice(0, 29) +
+      thirdLine.slice(0, 29) +
+      fourthLine.slice(0, 29);
 
   const greenIndexes = [0, 1, 3, 4];
-  const indexesWithMargin = [4, 34];
+  const indexesWithMargin = [4, 33, 62, 91];
 
   return (
     <Wrapper>

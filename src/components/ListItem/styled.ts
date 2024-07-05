@@ -1,67 +1,43 @@
+import { css } from "@linaria/core";
 import { styled } from "@linaria/react";
 
 export const Wrapper = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
+  gap: 10px;
   width: 100%;
   flex-wrap: wrap;
 `;
 
-export const Letter = styled.span`
+export const Letter = styled.div`
+  background-color: #474f59;
+  min-width: 50px;
+  /* width: 52px; */
+  height: 72px;
   position: relative;
-  width: 48px;
-  min-width: 48px;
-  margin: 0 4px;
-  padding: 0 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  background-color: #222;
-  color: #fff;
-  height: 64px;
-  vertical-align: middle;
-  font-size: 48px;
-  margin-bottom: 16px;
-  box-shadow: 0px 5px 5px 0px black;
-  border-radius: 4px;
-  transition: all 0.3s;
+  /* overflow: hidden; */
+  border-radius: 2px;
+  background: conic-gradient(from 90deg at 2px 2px, #474f59 90deg, #0000 0) 8px
+    0px/10px 10px;
 
-  &::before {
-    content: "";
+  span {
     position: absolute;
-    left: 0;
+    top: -3px;
+    margin-left: auto;
+    margin-right: auto;
+    left: -5px;
     right: 0;
-    height: 50%;
-    background: linear-gradient(to top, rgba(255, 255, 255, 0.1), transparent);
-    z-index: 1;
-    transition: all 0.3s;
-    top: 0;
-  }
-
-  &::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    height: 50%;
-    background: linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.1),
-      transparent
-    );
-    z-index: 1;
-    bottom: 0;
-    transition: all 0.3s;
+    height: 82px;
+    font-size: 98px;
+    text-align: center;
   }
 `;
 
-export const Divider = styled.div`
-  position: absolute;
-  top: 50%;
-  height: 1px;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  box-shadow: 0 0 1px 0 #222;
-  z-index: 100;
+export const stylesGreen = css`
+  color: #a6e5a8;
+`;
+
+export const stylesWithMargin = css`
+  margin-right: 36px;
 `;

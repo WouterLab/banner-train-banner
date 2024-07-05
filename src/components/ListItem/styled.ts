@@ -11,22 +11,22 @@ export const Wrapper = styled.div`
 `;
 
 export const Letter = styled.div`
-  background-color: #636f7d;
+  background-color: #66717f;
   min-width: 18px;
-  height: 22px;
+  width: 18px;
+  height: 24px;
   position: relative;
-  border-radius: 2px;
-  background: conic-gradient(from 90deg at 2px 2px, #636f7d 90deg, #0000 0) 4px
-    0px/4px 4px;
+  background: conic-gradient(from 90deg at 2px 2px, #66717f 90deg, #0000 0) 2px
+    2px/4px 4px;
 
   span {
     position: absolute;
-    top: 0px;
+    top: -2px;
     margin-left: auto;
     margin-right: auto;
-    left: 0px;
+    left: -0.5px;
     right: 0;
-    font-size: 26px;
+    font-size: 32px;
     text-align: center;
   }
 `;

@@ -105,10 +105,16 @@ body,
   display: none;
 }
 
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 #root {
   border: 30px solid #a02f5b;
-  margin: 0 auto;
   width: 840px;
+  height: 840px;
   background: linear-gradient(145deg, #151c22, #192229);
 }
 

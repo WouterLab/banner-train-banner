@@ -97,8 +97,6 @@ body,
   font-family: "5by7";
   overflow: auto;
   background: #151c22;
-  background: linear-gradient(145deg, #151c22, #192229);
-
   font-size: 64px;
   text-transform: uppercase;
 }
@@ -109,6 +107,9 @@ body,
 
 #root {
   border: 30px solid #a02f5b;
+  margin: 0 auto;
+  width: 840px;
+  background: linear-gradient(145deg, #151c22, #192229);
 }
 
 @font-face {

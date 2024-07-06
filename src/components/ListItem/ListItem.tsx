@@ -7,7 +7,7 @@ type ListItemProps = {
 };
 
 export function ListItem({ time, name, phrase }: ListItemProps) {
-  const text = time + name + " " + phrase;
+  const text = name ? time + name + " " + phrase : time + phrase;
   const itemsInRow = 33;
   const emptyRow = "                                 ";
 
@@ -17,7 +17,7 @@ export function ListItem({ time, name, phrase }: ListItemProps) {
     let currentLine = "";
 
     for (let i = 0; i < words.length; i++) {
-      if ((currentLine + words[i]).length > 29) {
+      if ((currentLine + words[i]).length > 30) {
         lines.push(currentLine.trim().padEnd(itemsInRow, " "));
         currentLine = words[i] + " ";
       } else {

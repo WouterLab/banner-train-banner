@@ -18,16 +18,35 @@ export function ListItem({ time, name, phrase }: ListItemProps) {
     let currentLine = "";
 
     for (let i = 0; i < words.length; i++) {
-      if ((currentLine + words[i]).length > 30) {
-        lines.push(currentLine.trim().padEnd(itemsInRow, " "));
-        currentLine = words[i] + " ";
+      const word = words[i];
+      if (lines.length > 0) {
+        if (
+          5 +
+            currentLine.length +
+            word.length +
+            (currentLine.length > 0 ? 1 : 0) <=
+          itemsInRow
+        ) {
+          currentLine += (currentLine.length > 0 ? " " : "") + word;
+        } else {
+          lines.push(currentLine.padEnd(itemsInRow, " "));
+          currentLine = word;
+        }
       } else {
-        currentLine += words[i] + " ";
+        if (
+          currentLine.length + word.length + (currentLine.length > 0 ? 1 : 0) <=
+          itemsInRow
+        ) {
+          currentLine += (currentLine.length > 0 ? " " : "") + word;
+        } else {
+          lines.push(currentLine.padEnd(itemsInRow, " "));
+          currentLine = word;
+        }
       }
     }
 
-    if (currentLine.trim() !== "") {
-      lines.push(currentLine.trim().padEnd(itemsInRow, " "));
+    if (currentLine.length > 0) {
+      lines.push(currentLine.padEnd(itemsInRow, " "));
     }
 
     return lines;

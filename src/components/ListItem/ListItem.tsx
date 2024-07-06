@@ -88,7 +88,7 @@ export function ListItem({ time, name, phrase }: ListItemProps) {
       fifthLine.slice(0, itemsInRow);
 
   const greenIndexes = [0, 1, 3, 4];
-  const indexesWithMargin = [4, 37, 70, 110];
+  const indexesWithMargin = [4, 37, 70, 103];
 
   return (
     <Wrapper>

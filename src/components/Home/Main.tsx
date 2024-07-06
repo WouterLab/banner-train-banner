@@ -20,9 +20,9 @@ export function Main() {
     };
 
     fetchNames();
-    // const interval = setInterval(fetchNames, 5000);
+    const interval = setInterval(fetchNames, 5000);
 
-    // return () => clearInterval(interval);
+    return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {

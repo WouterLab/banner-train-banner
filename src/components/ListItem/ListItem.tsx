@@ -7,7 +7,8 @@ type ListItemProps = {
 };
 
 export function ListItem({ time, name, phrase }: ListItemProps) {
-  const text = name ? time + name + " " + phrase : time + phrase;
+  const text = name !== "" ? time + name + " " + phrase : time + phrase;
+
   const itemsInRow = 33;
   const emptyRow = "                                 ";
 

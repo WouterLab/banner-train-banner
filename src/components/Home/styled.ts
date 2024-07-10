@@ -27,4 +27,8 @@ export const hiddenClassName = css`
   opacity: 0;
 `;
 
-export const Item = styled.div``;
+export const Item = styled.div`
+  animation-name: "show";
+  animation-timing-function: ease-in-out;
+  animation-duration: 0.3s;
+`;

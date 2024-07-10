@@ -4,10 +4,9 @@ type EmptyItemProps = {
   time: string;
   name: string;
   phrase: string;
-  itemIndex: number;
 };
 
-export function EmptyItem({ time, name, phrase, itemIndex }: EmptyItemProps) {
+export function EmptyItem({ time, name, phrase }: EmptyItemProps) {
   const text = name !== "" ? time + name + " " + phrase : time + phrase;
 
   const itemsInRow = 33;
@@ -119,9 +118,6 @@ export function EmptyItem({ time, name, phrase, itemIndex }: EmptyItemProps) {
           className={`${greenIndexes.includes(index) ? stylesGreen : ""} ${
             indexesWithMargin.includes(index) ? stylesWithMargin : ""
           }`}
-          style={{
-            animationDuration: `${0.3 * itemIndex}s`,
-          }}
         >
           <span>{char}</span>
         </Letter>
@@ -132,9 +128,6 @@ export function EmptyItem({ time, name, phrase, itemIndex }: EmptyItemProps) {
           className={`${greenIndexes.includes(index) ? stylesGreen : ""} ${
             indexesWithMargin.includes(index) ? stylesWithMargin : ""
           }`}
-          style={{
-            animationDuration: `${0.3 * itemIndex}s`,
-          }}
         >
           <span>{char}</span>
         </Letter>
@@ -145,9 +138,6 @@ export function EmptyItem({ time, name, phrase, itemIndex }: EmptyItemProps) {
           className={`${greenIndexes.includes(index) ? stylesGreen : ""} ${
             indexesWithMargin.includes(index) ? stylesWithMargin : ""
           }`}
-          style={{
-            animationDuration: `${0.3 * itemIndex}s`,
-          }}
         >
           <span>{char}</span>
         </Letter>

@@ -88,37 +88,45 @@ export function Main() {
 
   return (
     <Wrapper>
-      <List ref={listRef} style={{ minHeight: 180 }}>
-        <Item>
+      <List style={{ minHeight: 180 }}>
+        <Item style={{ animationDuration: `${0.3 * 1}` }}>
           <ListItem
             time={mockList[0].time}
             name={mockList[0].name}
             phrase={mockList[0].phrase}
-            itemIndex={1}
           />
         </Item>
-        <Item>
+        <Item style={{ animationDuration: `${0.3 * 2}` }}>
           <ListItem
             time={mockList[1].time}
             name={mockList[1].name}
             phrase={mockList[1].phrase}
-            itemIndex={2}
           />
         </Item>
       </List>
       <List ref={listRef}>
         {list.length < 5 &&
           emptyList.map((item, index) => (
-            <Item key={index + item.name}>
+            <Item
+              key={index + item.name}
+              style={{ animationDuration: `${0.3 * (index + 3)}` }}
+            >
               <EmptyItem
                 time={item.time}
                 name={item.name}
                 phrase={item.phrase}
-                itemIndex={index + 3}
               />
             </Item>
           ))}
         {list.map((item, index) => (
+          <Item
+            key={index + item.name}
+            style={{ animationDuration: `${0.3 * (index + 3)}` }}
+          >
+            <ListItem time={item.time} name={item.name} phrase={item.phrase} />
+          </Item>
+        ))}
+        {/* {emptyList.slice(0, 1).map((item, index) => (
           <Item key={index + item.name}>
             <ListItem
               time={item.time}
@@ -127,7 +135,7 @@ export function Main() {
               itemIndex={index + 3}
             />
           </Item>
-        ))}
+        ))} */}
       </List>
     </Wrapper>
   );

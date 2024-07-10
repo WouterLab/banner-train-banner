@@ -1,22 +1,9 @@
 import { EmptyItem } from "#components/EmptyItem";
 import { ListItem } from "#components/ListItem";
-import { List, Wrapper } from "./styled";
+import { Item, List, Wrapper } from "./styled";
 import { useEffect, useRef, useState } from "react";
 
 type ItemType = { name: string; time: string; phrase: string };
-
-const mockData = [
-  {
-    time: "08:37",
-    name: "Наша птичка.",
-    phrase: "Не перелетная, а цыпа улётная",
-  },
-  {
-    time: "09:25",
-    name: "ДЫМ ДЫМЫЧ.",
-    phrase: "Не сервелат,     а счастья аромат",
-  },
-];
 
 const emptyList = [
   {
@@ -53,12 +40,26 @@ const emptyList = [
 
 export function Main() {
   const [list, setList] = useState<ItemType[]>([]);
+  const mockData = [
+    {
+      time: "08:37",
+      name: "Наша птичка.",
+      phrase: "Не перелетная, а цыпа улётная",
+    },
+    {
+      time: "09:25",
+      name: "ДЫМ ДЫМЫЧ.",
+      phrase: "Не сервелат,     а счастья аромат",
+    },
+  ];
+  const [mockList, setMockList] = useState(mockData);
   const listRef = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
     const fetchNames = async () => {
       const response = await fetch("https://dapanov.ru/api");
       const data = await response.json();
+
       if (data && data.length === 0) return;
 
       if (data && data.length > 5) {
@@ -70,6 +71,7 @@ export function Main() {
         return;
       }
 
+      setMockList(mockData);
       setList(data);
       listRef.current?.lastElementChild?.scrollIntoView({ behavior: "smooth" });
     };
@@ -87,41 +89,54 @@ export function Main() {
   return (
     <Wrapper>
       <List ref={listRef} style={{ minHeight: 180 }}>
-        <div>
+        <Item
+          style={{
+            animationDuration: `${0.3 * 1}s`,
+          }}
+        >
           <ListItem
-            time={mockData[0].time}
-            name={mockData[0].name}
-            phrase={mockData[0].phrase}
+            time={mockList[0].time}
+            name={mockList[0].name}
+            phrase={mockList[0].phrase}
           />
-        </div>
-        <div>
+        </Item>
+        <Item
+          style={{
+            animationDuration: `${0.3 * 2}s`,
+          }}
+        >
           <ListItem
-            time={mockData[1].time}
-            name={mockData[1].name}
-            phrase={mockData[1].phrase}
+            time={mockList[1].time}
+            name={mockList[1].name}
+            phrase={mockList[1].phrase}
           />
-        </div>
+        </Item>
       </List>
       <List ref={listRef}>
         {list.length < 5 &&
           emptyList.map((item, index) => (
-            <div key={index + item.name}>
+            <Item
+              key={index + item.name}
+              style={{
+                animationDuration: `${0.3 * (index + 3)}s`,
+              }}
+            >
               <EmptyItem
                 time={item.time}
                 name={item.name}
                 phrase={item.phrase}
               />
-            </div>
+            </Item>
           ))}
         {list.map((item, index) => (
-          <div key={index + item.name}>
+          <Item
+            key={index + item.name}
+            style={{
+              animationDuration: `${0.3 * (index + 3)}s`,
+            }}
+          >
             <ListItem time={item.time} name={item.name} phrase={item.phrase} />
-          </div>
-        ))}
-        {emptyList.slice(0, 1).map((item, index) => (
-          <div key={index + item.name}>
-            <ListItem time={item.time} name={item.name} phrase={item.phrase} />
-          </div>
+          </Item>
         ))}
       </List>
     </Wrapper>

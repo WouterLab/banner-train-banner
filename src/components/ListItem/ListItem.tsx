@@ -1,13 +1,30 @@
-import { Wrapper, Letter, stylesGreen, stylesWithMargin } from "./styled";
+import { useEffect, useState } from "react";
+import {
+  Wrapper,
+  Letter,
+  stylesGreen,
+  stylesWithMargin,
+  stylesVisible,
+} from "./styled";
 
 type ListItemProps = {
   time: string;
   name: string;
   phrase: string;
+  itemIndex: number;
 };
 
-export function ListItem({ time, name, phrase }: ListItemProps) {
+export function ListItem({ time, name, phrase, itemIndex }: ListItemProps) {
   const text = name !== "" ? time + name + " " + phrase : time + phrase;
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    setVisible(false);
+
+    setTimeout(() => {
+      setVisible(true);
+    }, itemIndex * 0.3);
+  }, [itemIndex]);
 
   const itemsInRow = 33;
   const emptyRow = "                                 ";
@@ -114,7 +131,7 @@ export function ListItem({ time, name, phrase }: ListItemProps) {
   const indexesWithMargin = [4, 37, 70, 103];
 
   return (
-    <Wrapper>
+    <Wrapper className={visible ? stylesVisible : ""}>
       {filledText.split("").map((char, index) => (
         <Letter
           key={index}

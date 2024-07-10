@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   gap: 8px;
-  height: 780px;
+  height: 800px;
   transition: all 0.3s;
 `;
 
@@ -27,7 +27,4 @@ export const hiddenClassName = css`
   opacity: 0;
 `;
 
-export const Item = styled.div`
-  animation-name: "show";
-  animation-timing-function: ease-in-out;
-`;
+export const Item = styled.div``;

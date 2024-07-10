@@ -8,6 +8,8 @@ export const Wrapper = styled.div`
   gap: 4px;
   width: 100%;
   flex-wrap: wrap;
+  opacity: 0;
+  transition: all 0.3s;
 `;
 
 export const Letter = styled.div`
@@ -37,4 +39,8 @@ export const stylesGreen = css`
 
 export const stylesWithMargin = css`
   margin-right: 8px;
+`;
+
+export const stylesVisible = css`
+  opacity: 1;
 `;

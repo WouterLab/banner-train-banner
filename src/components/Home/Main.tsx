@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 
 type ItemType = { name: string; time: string; phrase: string };
 
-const emptyList = [
+const emptyData = [
   {
     time: "",
     name: "",
@@ -53,6 +53,7 @@ export function Main() {
     },
   ];
   const [mockList, setMockList] = useState(mockData);
+  const [emptyList, setEmptyList] = useState(emptyData);
   const listRef = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
@@ -61,6 +62,11 @@ export function Main() {
       const data = await response.json();
 
       if (data && data.length === 0) return;
+
+      if (data && data.length < 5) {
+        setEmptyList(emptyData.slice(0, 6 - data.length));
+        setList(data);
+      }
 
       if (data && data.length > 5) {
         const sliced = data.slice(data.length - 5, data.length);
@@ -105,19 +111,6 @@ export function Main() {
         </Item>
       </List>
       <List ref={listRef}>
-        {list.length < 5 &&
-          emptyList.map((item, index) => (
-            <Item
-              key={index + item.name}
-              style={{ animationDuration: `${0.3 * (index + 3)}` }}
-            >
-              <EmptyItem
-                time={item.time}
-                name={item.name}
-                phrase={item.phrase}
-              />
-            </Item>
-          ))}
         {list.map((item, index) => (
           <Item
             key={index + item.name}
@@ -126,6 +119,27 @@ export function Main() {
             <ListItem time={item.time} name={item.name} phrase={item.phrase} />
           </Item>
         ))}
+        {list.length < 5 &&
+          emptyList.map((item, index) => (
+            <Item
+              key={index + item.name}
+              style={{ animationDuration: `${0.3 * (index + 3)}` }}
+            >
+              {index === emptyList.length - 1 ? (
+                <ListItem
+                  time={item.time}
+                  name={item.name}
+                  phrase={item.phrase}
+                />
+              ) : (
+                <EmptyItem
+                  time={item.time}
+                  name={item.name}
+                  phrase={item.phrase}
+                />
+              )}
+            </Item>
+          ))}
         {/* {emptyList.slice(0, 1).map((item, index) => (
           <Item key={index + item.name}>
             <ListItem

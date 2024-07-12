@@ -42,12 +42,12 @@ export function Main() {
   const [list, setList] = useState<ItemType[]>([]);
   const mockData = [
     {
-      time: "08:37",
+      time: "22:37",
       name: "Наша птичка.",
       phrase: "Не перелетная, а цыпа улётная",
     },
     {
-      time: "09:25",
+      time: "21:25",
       name: "ДЫМ ДЫМЫЧ.",
       phrase: "Не сервелат,     а счастья аромат",
     },
@@ -65,11 +65,11 @@ export function Main() {
 
       if (data && data.length < 5) {
         setEmptyList(emptyData.slice(0, 6 - data.length));
-        setList(data);
+        setList(data.reverse());
       }
 
       if (data && data.length > 5) {
-        const sliced = data.slice(data.length - 5, data.length);
+        const sliced = data.slice(data.length - 5, data.length).reverse();
         setList(sliced);
         listRef.current?.lastElementChild?.scrollIntoView({
           behavior: "smooth",

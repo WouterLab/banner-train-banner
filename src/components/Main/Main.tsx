@@ -72,7 +72,7 @@ export function Main() {
         const sliced = data.slice(data.length - 5, data.length).reverse();
 
         setList(sliced);
-        listRef.current?.lastElementChild?.scrollIntoView({
+        listRef.current?.firstElementChild?.scrollIntoView({
           behavior: "smooth",
         });
         return;
@@ -80,7 +80,9 @@ export function Main() {
 
       setMockList(mockData);
       setList(data);
-      listRef.current?.lastElementChild?.scrollIntoView({ behavior: "smooth" });
+      listRef.current?.firstElementChild?.scrollIntoView({
+        behavior: "smooth",
+      });
     };
 
     fetchNames();
@@ -90,7 +92,7 @@ export function Main() {
   }, []);
 
   useEffect(() => {
-    listRef.current?.lastElementChild?.scrollIntoView({ behavior: "smooth" });
+    listRef.current?.firstElementChild?.scrollIntoView({ behavior: "smooth" });
   }, [list]);
 
   return (

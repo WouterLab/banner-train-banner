@@ -30,6 +30,14 @@ export const Letter = styled.div`
     font-size: 37px;
     text-align: center;
   }
+
+  b {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    left: 6px;
+    top: -7px;
+    position: absolute;
+  }
 `;
 
 export const stylesGreen = css`

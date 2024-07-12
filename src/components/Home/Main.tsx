@@ -44,7 +44,7 @@ export function Main() {
     {
       time: "22:37",
       name: "Наша птичка.",
-      phrase: "Не перелетная, а цыпа улётная",
+      phrase: "Не перелетная, а цыпа улетная",
     },
     {
       time: "21:25",
@@ -68,8 +68,9 @@ export function Main() {
         setList(data.reverse());
       }
 
-      if (data && data.length > 5) {
+      if (data && data.length > 4) {
         const sliced = data.slice(data.length - 5, data.length).reverse();
+
         setList(sliced);
         listRef.current?.lastElementChild?.scrollIntoView({
           behavior: "smooth",

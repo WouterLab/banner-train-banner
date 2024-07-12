@@ -7,7 +7,9 @@ type ListItemProps = {
 };
 
 export function ListItem({ time, name, phrase }: ListItemProps) {
-  const text = name !== "" ? time + name + " " + phrase : time + phrase;
+  const text = (name !== "" ? time + name + " " + phrase : time + phrase)
+    .replaceAll("ё", "е")
+    .replaceAll("Ё", "е");
 
   const itemsInRow = 33;
   const emptyRow = "                                 ";
@@ -122,7 +124,8 @@ export function ListItem({ time, name, phrase }: ListItemProps) {
             indexesWithMargin.includes(index) ? stylesWithMargin : ""
           }`}
         >
-          <span>{char}</span>
+          {(char === "й" || char === "Й") && <b>•</b>}
+          <span>{char === "й" || char === "Й" ? "и" : char}</span>
         </Letter>
       ))}
       {emptyRow.split("").map((char, index) => (

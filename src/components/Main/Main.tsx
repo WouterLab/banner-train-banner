@@ -96,6 +96,9 @@ export function Main() {
   return (
     <Wrapper>
       <List style={{ minHeight: 180 }}>
+        <Item>
+          <EmptyItem time='' name='' phrase='' oneRow />
+        </Item>
         <Item style={{ animationDuration: `${0.3 * 1}` }}>
           <ListItem
             time={mockList[0].time}

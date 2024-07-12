@@ -4,9 +4,10 @@ type EmptyItemProps = {
   time: string;
   name: string;
   phrase: string;
+  oneRow?: boolean;
 };
 
-export function EmptyItem({ time, name, phrase }: EmptyItemProps) {
+export function EmptyItem({ time, name, phrase, oneRow }: EmptyItemProps) {
   const text = name !== "" ? time + name + " " + phrase : time + phrase;
 
   const itemsInRow = 33;
@@ -122,26 +123,28 @@ export function EmptyItem({ time, name, phrase }: EmptyItemProps) {
           <span>{char}</span>
         </Letter>
       ))}
-      {emptyRow.split("").map((char, index) => (
-        <Letter
-          key={index}
-          className={`${greenIndexes.includes(index) ? stylesGreen : ""} ${
-            indexesWithMargin.includes(index) ? stylesWithMargin : ""
-          }`}
-        >
-          <span>{char}</span>
-        </Letter>
-      ))}
-      {emptyRow.split("").map((char, index) => (
-        <Letter
-          key={index}
-          className={`${greenIndexes.includes(index) ? stylesGreen : ""} ${
-            indexesWithMargin.includes(index) ? stylesWithMargin : ""
-          }`}
-        >
-          <span>{char}</span>
-        </Letter>
-      ))}
+      {!oneRow &&
+        emptyRow.split("").map((char, index) => (
+          <Letter
+            key={index}
+            className={`${greenIndexes.includes(index) ? stylesGreen : ""} ${
+              indexesWithMargin.includes(index) ? stylesWithMargin : ""
+            }`}
+          >
+            <span>{char}</span>
+          </Letter>
+        ))}
+      {!oneRow &&
+        emptyRow.split("").map((char, index) => (
+          <Letter
+            key={index}
+            className={`${greenIndexes.includes(index) ? stylesGreen : ""} ${
+              indexesWithMargin.includes(index) ? stylesWithMargin : ""
+            }`}
+          >
+            <span>{char}</span>
+          </Letter>
+        ))}
     </Wrapper>
   );
 }

@@ -71,7 +71,7 @@ export function ListItem({ time, name, phrase }: ListItemProps) {
 
   let filledText = firstLine;
 
-  const isOneRow = lines.length === 1;
+  // const isOneRow = lines.length === 1;
 
   if (firstLine.replace(/\s/g, "") && secondLine.replace(/\s/g, "")) {
     filledText = firstLine + secondLine.slice(0, itemsInRow);
@@ -138,17 +138,6 @@ export function ListItem({ time, name, phrase }: ListItemProps) {
           <span>{char}</span>
         </Letter>
       ))}
-      {isOneRow &&
-        emptyRow.split("").map((char, index) => (
-          <Letter
-            key={index}
-            className={`${greenIndexes.includes(index) ? stylesGreen : ""} ${
-              indexesWithMargin.includes(index) ? stylesWithMargin : ""
-            }`}
-          >
-            <span>{char}</span>
-          </Letter>
-        ))}
     </Wrapper>
   );
 }

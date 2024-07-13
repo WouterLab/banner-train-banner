@@ -91,7 +91,7 @@ export function Main() {
             behavior: "smooth",
           });
           return;
-        } else if (fullLength < 120) {
+        } else if (fullLength < 130) {
           setList(slicedSix);
           listRef.current?.firstElementChild?.scrollIntoView({
             behavior: "smooth",

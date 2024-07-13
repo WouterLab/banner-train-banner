@@ -69,13 +69,31 @@ export function Main() {
       }
 
       if (data && data.length > 4) {
-        const sliced = data.slice(data.length - 5, data.length).reverse();
+        const sliced: { name: string; time: string; phrase: string }[] = data
+          .slice(data.length - 5, data.length)
+          .reverse();
 
-        setList(sliced);
-        listRef.current?.firstElementChild?.scrollIntoView({
-          behavior: "smooth",
+        const slicedSix = data.slice(data.length - 6, data.length).reverse();
+
+        let fullLength = 0;
+
+        sliced.map((el) => {
+          fullLength += el.name.length + el.phrase.length;
         });
-        return;
+
+        if (fullLength < 120) {
+          setList(slicedSix);
+          listRef.current?.firstElementChild?.scrollIntoView({
+            behavior: "smooth",
+          });
+          return;
+        } else {
+          setList(sliced);
+          listRef.current?.firstElementChild?.scrollIntoView({
+            behavior: "smooth",
+          });
+          return;
+        }
       }
 
       setMockList(mockData);

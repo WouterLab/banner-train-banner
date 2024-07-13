@@ -75,13 +75,23 @@ export function Main() {
 
         const slicedSix = data.slice(data.length - 6, data.length).reverse();
 
+        const slicedSeven = data.slice(data.length - 7, data.length).reverse();
+
         let fullLength = 0;
 
         sliced.map((el) => {
           fullLength += el.name.length + el.phrase.length;
         });
 
-        if (fullLength < 120) {
+        console.log(fullLength);
+
+        if (fullLength < 100) {
+          setList(slicedSeven);
+          listRef.current?.firstElementChild?.scrollIntoView({
+            behavior: "smooth",
+          });
+          return;
+        } else if (fullLength < 120) {
           setList(slicedSix);
           listRef.current?.firstElementChild?.scrollIntoView({
             behavior: "smooth",

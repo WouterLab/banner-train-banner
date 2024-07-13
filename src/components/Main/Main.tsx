@@ -85,20 +85,14 @@ export function Main() {
 
         console.log(fullLength);
 
-        if (fullLength < 100) {
+        if (fullLength < 120) {
           setList(slicedSeven);
           listRef.current?.firstElementChild?.scrollIntoView({
             behavior: "smooth",
           });
           return;
-        } else if (fullLength < 130) {
-          setList(slicedSix);
-          listRef.current?.firstElementChild?.scrollIntoView({
-            behavior: "smooth",
-          });
-          return;
         } else {
-          setList(sliced);
+          setList(slicedSix);
           listRef.current?.firstElementChild?.scrollIntoView({
             behavior: "smooth",
           });
@@ -130,47 +124,25 @@ export function Main() {
           <EmptyItem time='' name='' phrase='' oneRow />
         </Item>
         <Item style={{ animationDuration: `${0.3 * 1}` }}>
-          <ListItem
-            time={mockList[0].time}
-            name={mockList[0].name}
-            phrase={mockList[0].phrase}
-          />
+          <ListItem time={mockList[0].time} name={mockList[0].name} phrase={mockList[0].phrase} />
         </Item>
         <Item style={{ animationDuration: `${0.3 * 2}` }}>
-          <ListItem
-            time={mockList[1].time}
-            name={mockList[1].name}
-            phrase={mockList[1].phrase}
-          />
+          <ListItem time={mockList[1].time} name={mockList[1].name} phrase={mockList[1].phrase} />
         </Item>
       </List>
       <List ref={listRef}>
         {list.map((item, index) => (
-          <Item
-            key={index + item.name}
-            style={{ animationDuration: `${0.3 * (index + 3)}` }}
-          >
+          <Item key={index + item.name} style={{ animationDuration: `${0.3 * (index + 3)}` }}>
             <ListItem time={item.time} name={item.name} phrase={item.phrase} />
           </Item>
         ))}
         {list.length < 5 &&
           emptyList.map((item, index) => (
-            <Item
-              key={index + item.name}
-              style={{ animationDuration: `${0.3 * (index + 3)}` }}
-            >
+            <Item key={index + item.name} style={{ animationDuration: `${0.3 * (index + 3)}` }}>
               {index === emptyList.length - 1 ? (
-                <ListItem
-                  time={item.time}
-                  name={item.name}
-                  phrase={item.phrase}
-                />
+                <ListItem time={item.time} name={item.name} phrase={item.phrase} />
               ) : (
-                <EmptyItem
-                  time={item.time}
-                  name={item.name}
-                  phrase={item.phrase}
-                />
+                <EmptyItem time={item.time} name={item.name} phrase={item.phrase} />
               )}
             </Item>
           ))}
